@@ -1,0 +1,6 @@
+node_modules/
+pptr-cache/
+server.log
+temporary screenshots/
+.cache/
+.puppeteerrc.cjs

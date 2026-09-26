@@ -1,0 +1,7 @@
+{
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "puppeteer": "^25.12.0"
+  }
+}
