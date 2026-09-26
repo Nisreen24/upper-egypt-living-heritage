@@ -111,7 +111,6 @@
   html.lang-latin .exp-title,html.lang-latin .events-title,html.lang-latin .paths-title,html.lang-latin .journey-title{white-space:normal}
   html.lang-latin .xa-mini span{letter-spacing:.04em;text-transform:uppercase;font-size:clamp(13px,1.1vw,16px)}
   html.lang-latin .hero .copy{text-align:start}
-  html[dir="ltr"] .hero-art{transform:scaleX(-1)}   /* mirror the collage so the paper area and the gaze face the copy */
   html[dir="ltr"] .fwd{transform:scaleX(-1)}
   html[dir="ltr"] :is(.cta,.card-cta,.xa-cta,.ev-cta,.journey-btn,.news-btn,.ev-all,.xcard-cta,.xcard-go,.xa-go):hover .fwd{transform:scaleX(-1) translateX(-4px)}
   html[dir="ltr"] .footer-links a::before{transform:rotate(135deg)}
@@ -1134,6 +1133,10 @@
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   const EASE = 'power3.out';
 
+  /* Mirror the hero collage in LTR (GSAP owns this transform, so intro/parallax keep it) */
+  const flipArt = () => gsap.set('.hero-art', { scaleX: document.documentElement.dir === 'ltr' ? -1 : 1 });
+  flipArt(); document.addEventListener('i18n:change', flipArt);
+
   /* 1. Language switch: soft crossfade instead of a hard swap */
   let switching = false;
   window.switchLang = (l) => {
@@ -1166,7 +1169,7 @@
     const heroCopy = document.querySelector('.hero .copy');
     if (heroCopy) {
       const intro = gsap.timeline({ defaults: { ease: EASE } })
-        .from('.hero-art', { scale: 1.04, autoAlpha: 0, duration: 1.4, ease: 'power2.out' }, 0)
+        .from('.hero-art', { yPercent: -3, autoAlpha: 0, duration: 1.4, ease: 'power2.out' }, 0)
         .from('.hero .eyebrow', { y: 18, autoAlpha: 0, duration: 0.7 }, 0.25)
         .from('.hero .headline > span', { y: 34, autoAlpha: 0, duration: 0.9, stagger: 0.12 }, 0.35)
         .from('.hero .lede', { y: 18, autoAlpha: 0, duration: 0.7 }, 0.7)
