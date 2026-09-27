@@ -102,6 +102,7 @@ window.I18N = (() => {
     'A different kind of peace': { es: 'Una paz diferente' },
     'عرض كل الفعاليات': { en: 'View all events', es: 'Ver todos los eventos' },
     'الفعالية التالية': { en: 'Next event', es: 'Siguiente evento' },
+    'الفعالية السابقة': { en: 'Previous event', es: 'Evento anterior' },
     'الفعاليات القادمة': { en: 'Upcoming events', es: 'Próximos eventos' },
     'أمسية نيلية على ضفاف أسوان': { en: 'A Nile evening on the banks of Aswan', es: 'Una noche en el Nilo a orillas de Asuán' },
     '28 أكتوبر — أمسية نيلية على ضفاف أسوان': { en: '28 October — A Nile evening on the banks of Aswan', es: '28 de octubre — Una noche en el Nilo a orillas de Asuán' },
