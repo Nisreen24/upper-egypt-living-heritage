@@ -127,12 +127,13 @@
   .brand-logo{display:block;height:44px;width:auto;user-select:none;-webkit-user-drag:none}
   @media (min-width:768px){.brand{padding-inline:10px 8px}.brand-logo{height:50px}}
   @media (min-width:1024px){.brand{padding-inline:12px 10px}.brand-logo{height:56px}}
-  .brand-logo--footer{height:64px}
+  .brand-logo--footer{height:72px}
+  @media (min-width:1024px){.brand-logo--footer{height:80px}}
   html[lang="ar"] .brand-logo--en{display:none}
   html:not([lang="ar"]) .brand-logo--ar{display:none}
-  .partner-logos{display:flex;align-items:center;gap:var(--s-4);margin-top:var(--s-2);flex-wrap:wrap}
-  .partner-logos img{height:40px;width:auto;object-fit:contain}
-  .partner-logos img.tall{height:52px}
+  .partner-logos{display:flex;align-items:center;gap:var(--s-5);margin-top:var(--s-3);flex-wrap:wrap}
+  .partner-logos img{height:52px;width:auto;object-fit:contain}
+  .partner-logos img.tall{height:68px}
   .js-tilt{transition:box-shadow .5s cubic-bezier(.2,.8,.2,1)!important;will-change:transform}
   .js-tilt:hover{transform:none}
   html{scroll-behavior:auto}
@@ -369,7 +370,7 @@
   .footer-brand{display:flex;align-items:center;gap:var(--s-2)}
   .footer-brand .display{line-height:1.05;font-size:16px;color:var(--nav-ink)}
   .footer-brand small{display:block;margin-top:6px;font-size:9px;letter-spacing:.28em;color:var(--muted);direction:ltr;text-align:left;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}
-  .footer-support{margin-top:var(--s-4);font-size:13px;color:var(--muted)}
+  .footer-support{margin-top:var(--s-5);font-size:14px;color:var(--muted)}
   .footer-partners{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-2)}
   .partner{display:flex;align-items:center;gap:8px;direction:ltr;text-align:left}
   .partner i{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;flex:none}
