@@ -121,6 +121,15 @@
   .lockup b{display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;font-weight:800;font-size:11.5px;line-height:.98;letter-spacing:.02em;text-transform:uppercase;text-align:left;white-space:nowrap}
   @media (min-width:1024px){.lockup svg{width:40px;height:40px}.lockup b{font-size:13px}}
   .lockup--lg svg{width:48px;height:48px}.lockup--lg b{font-size:14.5px}
+  /* ---------- NAV BRAND (real logo, AR / EN swap by <html lang>) ---------- */
+  .brand{display:inline-flex;align-items:center;align-self:stretch;padding-inline:8px 6px;border-radius:999px;flex:none;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .brand:hover{transform:translateY(-1px)} .brand:active{transform:translateY(0) scale(.98)}
+  .brand-logo{display:block;height:44px;width:auto;user-select:none;-webkit-user-drag:none}
+  @media (min-width:768px){.brand{padding-inline:10px 8px}.brand-logo{height:50px}}
+  @media (min-width:1024px){.brand{padding-inline:12px 10px}.brand-logo{height:56px}}
+  .brand-logo--footer{height:64px}
+  html[lang="ar"] .brand-logo--en{display:none}
+  html:not([lang="ar"]) .brand-logo--ar{display:none}
   .partner-logos{display:flex;align-items:center;gap:var(--s-4);margin-top:var(--s-2);flex-wrap:wrap}
   .partner-logos img{height:40px;width:auto;object-fit:contain}
   .partner-logos img.tall{height:52px}
@@ -335,31 +344,41 @@
   .footer-lotus{position:absolute;bottom:0;width:clamp(120px,16vw,240px);height:auto;opacity:.75;pointer-events:none;user-select:none;z-index:0}
   @media (max-width:1023px){.footer-lotus{opacity:.35}}
   .footer-lotus--start{inset-inline-start:0} .footer-lotus--end{inset-inline-end:0}
-  .footer-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:var(--s-5);padding-block:var(--s-7) var(--s-6);width:min(100%,1180px);margin-inline:auto}
-  @media (min-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
-  @media (min-width:1024px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr 1.1fr;gap:var(--s-4);padding-block:var(--s-8) var(--s-7)}}
-  .footer-col{padding-inline:var(--s-3)}
-  @media (min-width:1024px){.footer-col{padding-inline:var(--s-4) var(--s-6);border-inline-start:1px solid rgba(43,29,14,.1)}.footer-col:first-child{border-inline-start:0;padding-inline-start:0}}
-  .footer-h{display:inline-block;font-size:16px;font-weight:700;color:var(--nav-ink);padding-bottom:8px;position:relative;margin-bottom:var(--s-3)}
+  /* Mobile: brand row on top (full width), the two link columns side by side, follow row full width.
+     Tablet (640+): brand row on top, then استكشف / المنصة / تابعنا as three columns.
+     Desktop (1024+): four columns with hairline dividers. */
+  .footer-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--s-4);row-gap:var(--s-6);padding-block:var(--s-6) var(--s-5);width:min(100%,1180px);margin-inline:auto}
+  .footer-col--brand,.footer-col--follow{grid-column:1 / -1}
+  @media (min-width:640px){.footer-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--s-5);padding-block:var(--s-7) var(--s-6)}.footer-col--follow{grid-column:auto}}
+  @media (min-width:1024px){.footer-grid{grid-template-columns:1.25fr 1fr 1fr 1.05fr;gap:var(--s-4);padding-block:var(--s-8) var(--s-7)}.footer-col--brand{grid-column:auto}}
+  .footer-col{padding-inline:0;min-width:0}
+  @media (min-width:1024px){.footer-col{padding-inline:var(--s-4) var(--s-5);border-inline-start:1px solid rgba(43,29,14,.1)}.footer-col:first-child{border-inline-start:0;padding-inline-start:0}}
+  @media (min-width:1200px){.footer-col{padding-inline:var(--s-5) var(--s-6)}}
+  /* Brand row below desktop: lockup and partners share one line */
+  @media (max-width:1023px){.footer-col--brand{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-3) var(--s-5);padding-bottom:var(--s-5);border-bottom:1px solid rgba(43,29,14,.1)}
+    .footer-col--brand .footer-support{margin-top:0;flex-basis:100%}.footer-col--brand .partner-logos{margin-top:0}}
+  @media (min-width:640px) and (max-width:1023px){.footer-col--brand{justify-content:flex-start}.footer-col--brand .footer-brand{margin-inline-end:auto}.footer-col--brand .footer-support{flex-basis:auto}.footer-col--brand .partner-logos{gap:var(--s-3)}}
+  .footer-h{display:inline-block;font-size:18px;font-weight:700;color:var(--nav-ink);padding-bottom:10px;position:relative;margin-bottom:var(--s-4);letter-spacing:-.01em}
+  @media (min-width:1024px){.footer-h{font-size:19px}}
   .footer-h::after{content:"";position:absolute;inset-inline:0;bottom:0;height:2px;background:var(--rust);border-radius:2px}
-  .footer-links{display:grid;gap:10px}
-  .footer-links a{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--body);transition:color .2s,transform .25s}
-  .footer-links a::before{content:"";width:5px;height:5px;border-inline-start:1.5px solid var(--rust);border-top:1.5px solid var(--rust);transform:rotate(-135deg);opacity:.8}
+  .footer-links{display:grid;gap:14px}
+  .footer-links a{display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:500;line-height:1.4;color:var(--body);transition:color .2s,transform .25s}
+  @media (min-width:1200px){.footer-links a{font-size:17px}}
+  .footer-links a::before{content:"";width:6px;height:6px;border-inline-start:1.5px solid var(--rust);border-top:1.5px solid var(--rust);transform:rotate(-135deg);opacity:.85;flex:none}
   .footer-links a:hover{color:var(--rust);transform:translateX(-2px)} .footer-links a:focus-visible{outline:3px solid rgba(165,62,26,.35);outline-offset:3px;border-radius:6px}
   .footer-brand{display:flex;align-items:center;gap:var(--s-2)}
-  .footer-brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;object-position:30% 55%;transform:scale(1);box-shadow:0 2px 6px rgba(43,29,14,.2)}
   .footer-brand .display{line-height:1.05;font-size:16px;color:var(--nav-ink)}
   .footer-brand small{display:block;margin-top:6px;font-size:9px;letter-spacing:.28em;color:var(--muted);direction:ltr;text-align:left;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}
-  .footer-support{margin-top:var(--s-4);font-size:11.5px;color:var(--muted)}
+  .footer-support{margin-top:var(--s-4);font-size:13px;color:var(--muted)}
   .footer-partners{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-2)}
   .partner{display:flex;align-items:center;gap:8px;direction:ltr;text-align:left}
   .partner i{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;flex:none}
   .partner b{display:block;font-size:11px;font-weight:700;color:var(--nav-ink);line-height:1.1;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}
   .partner span{display:block;font-size:8.5px;line-height:1.3;color:var(--muted);max-width:110px;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif}
-  .footer-social{display:flex;gap:10px}
-  .footer-social a{width:36px;height:36px;border-radius:999px;background:#1f1a14;color:#fff;display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .footer-social{display:flex;gap:12px}
+  .footer-social a{width:40px;height:40px;border-radius:999px;background:#1f1a14;color:#fff;display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
   .footer-social a:hover{background:var(--rust);transform:translateY(-2px)} .footer-social a:active{transform:scale(.95)} .footer-social a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
-  .footer-contact{display:inline-flex;align-items:center;gap:8px;margin-top:var(--s-3);height:36px;padding-inline:14px;border-radius:8px;border:1px solid rgba(43,29,14,.18);font-size:13px;font-weight:600;color:var(--nav-ink);transition:background-color .2s,border-color .2s}
+  .footer-contact{display:inline-flex;align-items:center;gap:8px;margin-top:var(--s-4);height:40px;padding-inline:16px;border-radius:8px;border:1px solid rgba(43,29,14,.18);font-size:14.5px;font-weight:600;color:var(--nav-ink);transition:background-color .2s,border-color .2s}
   .footer-contact:hover{background:#fff;border-color:var(--rust)} .footer-contact:focus-visible{outline:3px solid rgba(165,62,26,.35);outline-offset:3px}
   .footer-strip{display:block;width:100%;height:auto;user-select:none;pointer-events:none}
 
@@ -433,7 +452,10 @@
   <nav class="nav-bar" aria-label="التنقل الرئيسي">
 
     <!-- Brand (inline-start = right in RTL) -->
-    <a href="#top" class="flex items-center ps-2 pe-1 rounded-full" aria-label="اكتشف صعيد مصر — الصفحة الرئيسية"><span class="lockup "><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="#E8792B" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 31C26 19 15 15 6 19"/><path d="M32 31c6-12 17-16 26-12"/><path d="M32 31c-1-10-1-18 0-27"/><path d="M32 31C22 27 12 29 6 36"/><path d="M32 31c10-4 20-2 26 5"/><path d="M32 31v23"/><path d="M19 58h26"/></g></svg><b>Discover<br>Upper<br>Egypt</b></span></a>
+    <a href="#top" class="brand" aria-label="اكتشف صعيد مصر — الصفحة الرئيسية">
+      <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
+      <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" decoding="async">
+    </a>
 
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
@@ -716,8 +738,8 @@
   <img class="footer-lotus footer-lotus--end" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 3.png" alt="" aria-hidden="true" loading="lazy" width="345" height="345">
   <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-col">
-        <a class="footer-brand" href="#top" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><span class="lockup lockup--lg"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="#E8792B" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 31C26 19 15 15 6 19"/><path d="M32 31c6-12 17-16 26-12"/><path d="M32 31c-1-10-1-18 0-27"/><path d="M32 31C22 27 12 29 6 36"/><path d="M32 31c10-4 20-2 26 5"/><path d="M32 31v23"/><path d="M19 58h26"/></g></svg><b>Discover<br>Upper<br>Egypt</b></span></a>
+      <div class="footer-col footer-col--brand">
+        <a class="footer-brand" href="#top" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
         <p class="footer-support">بدعم من</p>
         <div class="partner-logos"><img src="brand_assets/aecid.png" alt="AECID — Spanish Agency for International Development Cooperation" width="720" height="320" loading="lazy"><img class="tall" src="brand_assets/cideal.png" alt="Cideal" width="544" height="757" loading="lazy"></div>
       </div>
@@ -729,7 +751,7 @@
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
         <div class="footer-links"><a href="#visitors">للسياح</a><a href="#business">لرواد الأعمال</a><a href="#partners">للجهات السياحية</a><a href="#about">عن المشروع</a><a href="#contact">تواصل معنا</a></div>
       </nav>
-      <div class="footer-col">
+      <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
         <div class="footer-social">
           <a href="#" aria-label="لينكدإن"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg></a>
