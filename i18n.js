@@ -38,6 +38,9 @@ window.I18N = (() => {
 
     /* ---- paths ---- */
     'اختر ما يناسب مسارك': { en: 'Choose your path', es: 'Elige tu camino' },
+    'رحلة بين مدينتين': { en: 'A journey between two cities', es: 'Un viaje entre dos ciudades' },
+    'لحظات تبقى معك': { en: 'Experiences that stay with you', es: 'Experiencias que se quedan contigo' },
+    'لا تفوّت ما يحدث': { en: 'Upcoming events', es: 'Próximos eventos' },
     'اكتشف ما يناسبك في صعيد مصر': { en: 'Find what suits you in Upper Egypt', es: 'Encuentra lo que va contigo en el Alto Egipto' },
     'للسياح والزوار': { en: 'For travellers & visitors', es: 'Para viajeros y visitantes' },
     'عش تجربة أصيلة بين النيل والتاريخ والضيافة الصعيدية': { en: 'Live an authentic experience between the Nile, history and Upper Egyptian hospitality.', es: 'Vive una experiencia auténtica entre el Nilo, la historia y la hospitalidad del Alto Egipto.' },
