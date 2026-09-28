@@ -1644,17 +1644,36 @@
       if (busy) return; busy = true;
       order = [order[1], order[2], order[0]];
       if (rm) { paint(); busy = false; return; }
-      const els = [feature, ...cards];
-      gsap.timeline({ defaults: { ease: 'sine.inOut' }, onComplete: () => { busy = false; } })
-        .to(els, { autoAlpha: 0, y: 14, duration: 0.7, stagger: 0.08 }, 0)
-        .add(paint, 0.85)
-        .to(els, { autoAlpha: 1, y: 0, duration: 1, stagger: 0.1, ease: 'sine.out' }, 0.95);
+      // Switcher: each card glides to the slot it is moving into (feature -> card 2, card 1 -> feature, card 2 -> card 1),
+      // then the DOM is repainted underneath and the transforms are cleared. Cards never disappear.
+      // Layout morph: a clone of each card travels to the slot it is moving into (feature -> card 2,
+      // card 1 -> feature, card 2 -> card 1) by animating its real box, so the content reflows instead
+      // of stretching. Underneath, the grid is repainted, then the clones are removed.
+      const grid = section.querySelector('.st-grid'), g = grid.getBoundingClientRect();
+      const els = [feature, cards[0], cards[1]];
+      const from = els.map(e => e.getBoundingClientRect());
+      const dest = [cards[1], feature, cards[0]].map(e => e.getBoundingClientRect());
+      const clones = els.map((el, k) => {
+        const c = el.cloneNode(true); c.removeAttribute('data-slot');
+        Object.assign(c.style, { position: 'absolute', margin: 0, minHeight: 0, pointerEvents: 'none', zIndex: k === 1 ? 6 : 5,
+          left: (from[k].left - g.left) + 'px', top: (from[k].top - g.top) + 'px', width: from[k].width + 'px', height: from[k].height + 'px' });
+        grid.appendChild(c); return c;
+      });
+      els.forEach(e => { e.style.visibility = 'hidden'; });
+      const D = 1.15;
+      const tl = gsap.timeline({ onComplete: () => { clones.forEach(c => c.remove()); els.forEach(e => { e.style.visibility = ''; }); busy = false; } });
+      clones.forEach((c, k) => {
+        const d = dest[k];
+        tl.to(c, { left: d.left - g.left, top: d.top - g.top, width: d.width, height: d.height, duration: D, ease: 'power2.inOut' }, 0);
+      });
+      tl.add(paint, D * 0.9);
     }
     new IntersectionObserver((en) => { visible = en[0].isIntersecting; }, { threshold: 0.35 }).observe(section);
     section.addEventListener('pointerenter', () => { hold = true; }); section.addEventListener('pointerleave', () => { hold = false; });
     section.addEventListener('focusin', () => { hold = true; }); section.addEventListener('focusout', () => { hold = section.contains(document.activeElement); });
     if (!rm) setInterval(() => { if (visible && !hold && !document.hidden) rotate(); }, 8000);
     document.addEventListener('i18n:change', paint);
+    window.__stRotate = rotate;
   })();
 
   /* Section entrances on scroll */
