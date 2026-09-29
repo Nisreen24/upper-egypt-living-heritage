@@ -309,6 +309,8 @@ window.I18N = (() => {
     'فندق على النيل بإطلالة مباشرة على النهر والبر الغربي.': { en: "A Nile hotel with a direct view of the river and the West Bank.", es: "Un hotel en el Nilo con vistas directas al río y a la orilla occidental." },
     'منتجع على جزيرة في النيل بين الحدائق والنخيل.': { en: "A resort on a Nile island among gardens and palms.", es: "Un resort en una isla del Nilo entre jardines y palmeras." },
     'حقوق الصور': { en: "Photo credits", es: "Créditos de las fotos" },
+    'تشغيل الموسيقى': { en: "Play music", es: "Reproducir música" },
+    'إيقاف الموسيقى': { en: "Mute music", es: "Silenciar música" },
     'استكشف الأقصر': { en: 'Explore Luxor', es: 'Explorar Luxor' },
     'استكشف أسوان': { en: 'Explore Aswan', es: 'Explorar Asuán' },
     'كولاج يصل بين بيوت النوبة الزرقاء في أسوان ومعابد الأقصر عبر النيل': { en: 'Collage linking the blue Nubian houses of Aswan with the temples of Luxor across the Nile', es: 'Collage que une las casas nubias azules de Asuán con los templos de Luxor a través del Nilo' },

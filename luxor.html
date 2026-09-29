@@ -1085,6 +1085,18 @@
     .lx-stories .st-card .st-body{padding:var(--s-3) var(--s-2) var(--s-2)}
     .lx-stories .st-body .st-name{font-size:var(--fs-h3-lg)}
   }
+  /* ambient sound */
+  .snd{position:fixed;z-index:60;bottom:var(--s-3);inset-inline-start:var(--s-3);display:inline-flex;align-items:center;gap:10px;height:var(--btn-h);padding-inline:var(--s-3);border-radius:var(--radius-full);background:rgba(11,34,48,.86);color:#fff;font-size:14px;font-weight:600;
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 2px rgba(0,0,0,.2),0 12px 28px -10px rgba(0,0,0,.55);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .snd:hover{background:var(--rust)} .snd:active{transform:scale(.96)}
+  .snd:focus-visible{outline:3px solid rgba(165,62,26,.6);outline-offset:3px}
+  .snd-bars{display:inline-flex;align-items:flex-end;gap:3px;height:16px}
+  .snd-bars i{width:3px;height:4px;border-radius:2px;background:currentColor;transform-origin:bottom}
+  .snd[aria-pressed="true"] .snd-bars i{height:16px;animation:snd 1.1s ease-in-out infinite}
+  .snd[aria-pressed="true"] .snd-bars i:nth-child(2){animation-delay:-.35s}.snd[aria-pressed="true"] .snd-bars i:nth-child(3){animation-delay:-.7s}.snd[aria-pressed="true"] .snd-bars i:nth-child(4){animation-delay:-.2s}
+  @keyframes snd{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+  @media (max-width:639px){.snd-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.snd{width:var(--btn-h);padding:0;justify-content:center}}
+  @media (prefers-reduced-motion:reduce){.snd[aria-pressed="true"] .snd-bars i{animation:none;transform:scaleY(.7)}}
   /* ===== places: full-bleed showcase ===== */
   .pv{position:relative;isolation:isolate;overflow:hidden;background:#1a130c;color:#fff;margin-block:var(--s-5) 0;min-height:min(100vh,760px);display:flex;--cw:150px;--ch:210px;--gap:12px}
   @media (min-width:768px){.pv{--cw:180px;--ch:250px;--gap:16px;min-height:680px}}
@@ -1342,6 +1354,12 @@
     </div>
   </div>
 </header>
+
+<button class="snd" id="lxSound" type="button" aria-pressed="false" aria-label="تشغيل الموسيقى">
+  <span class="snd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <span class="snd-t" id="lxSoundT">تشغيل الموسيقى</span>
+</button>
+<audio id="lxAudio" src="ASSETS/audio/luxor-ambient.mp3" loop preload="none"></audio>
 
 <main>
   <section class="xh" id="xh" aria-labelledby="xh-title">
@@ -1784,7 +1802,7 @@
 </main>
 
 <aside class="lx-credits" aria-label="حقوق الصور"><div class="wrap"><details><summary>حقوق الصور</summary>
-      <p dir="ltr" lang="en">Wikimedia Commons: Winter Palace, Sonesta St George, Jolie Ville infinity pool, Valley of the Kings — Marc Ryckaert (CC BY-SA 4.0) · Steigenberger — Olaf Tausch (CC BY 3.0) · Hôtel Villa Nile — Chabe01 (CC BY-SA 4.0) · Egyptian Koshari — Basma (CC BY-SA 4.0) · Small restaurant in Luxor — anagh (CC BY-SA 3.0).</p></details></div></aside>
+      <p dir="ltr" lang="en">Wikimedia Commons: Winter Palace, Sonesta St George, Jolie Ville infinity pool, Valley of the Kings — Marc Ryckaert (CC BY-SA 4.0) · Steigenberger — Olaf Tausch (CC BY 3.0) · Hôtel Villa Nile — Chabe01 (CC BY-SA 4.0) · Egyptian Koshari — Basma (CC BY-SA 4.0) · Small restaurant in Luxor — anagh (CC BY-SA 3.0). Music: “Desert City” by Kevin MacLeod, incompetech.com (CC BY 4.0).</p></details></div></aside>
 
 <footer class="footer" aria-label="تذييل الصفحة">
   <div class="footer-main">
@@ -2466,6 +2484,25 @@
 </script>
 <script>
 document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); });
+</script>
+<script>
+/* Ambient music: starts on the visitor's first interaction (browsers block sound before that), fades in, and remembers a mute */
+(() => {
+  const a = document.getElementById('lxAudio'), b = document.getElementById('lxSound'), tx = document.getElementById('lxSoundT'); if (!a || !b) return;
+  const KEY = 'se-sound', MAX = 0.35; let fade = 0, on = false;
+  const muted = () => { try { return localStorage.getItem(KEY) === 'off'; } catch { return false; } };
+  const save = v => { try { localStorage.setItem(KEY, v); } catch {} };
+  function ui() { b.setAttribute('aria-pressed', String(on)); const l = I18N.t(on ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى'); b.setAttribute('aria-label', l); tx.textContent = l; }
+  function ramp(to, done) { cancelAnimationFrame(fade); const from = a.volume, t0 = performance.now(); const step = t => { const k = Math.min(1, (t - t0) / 1400); a.volume = from + (to - from) * k; if (k < 1) fade = requestAnimationFrame(step); else if (done) done(); }; fade = requestAnimationFrame(step); }
+  function play() { a.volume = 0; return a.play().then(() => { on = true; ui(); ramp(MAX); }).catch(() => { on = false; ui(); }); }
+  function stop() { on = false; ui(); ramp(0, () => a.pause()); }
+  b.addEventListener('click', e => { e.stopPropagation(); if (on) { save('off'); stop(); } else { save('on'); play(); } });
+  const first = e => { if (e.target.closest && e.target.closest('#lxSound')) return; off(); if (!muted() && !on) play(); };
+  const evs = ['pointerdown', 'keydown', 'wheel', 'touchstart'], off = () => evs.forEach(n => removeEventListener(n, first, true));
+  evs.forEach(n => addEventListener(n, first, { capture: true, passive: true }));
+  document.addEventListener('i18n:change', ui); ui();
+  window.__snd = { get on() { return on; }, get vol() { return a.volume; }, get paused() { return a.paused; } };
+})();
 </script>
 </body>
 </html>
