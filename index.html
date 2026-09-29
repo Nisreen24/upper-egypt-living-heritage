@@ -730,16 +730,22 @@
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.card:hover,.gem:hover,.ss-card:hover,.xa-card:hover{transform:none}}
 .footer-credit{position:relative;z-index:1;margin:0;padding:0 var(--s-3) var(--s-3);text-align:center;font-size:12.5px;line-height:1.6!important;color:var(--muted)}
   /* ambient sound */
-  .snd{position:fixed;z-index:60;bottom:var(--s-3);inset-inline-start:var(--s-3);display:inline-flex;align-items:center;gap:10px;height:var(--btn-h);padding-inline:var(--s-3);border-radius:var(--radius-full);background:rgba(11,34,48,.86);color:#fff;font-size:14px;font-weight:600;
-    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 2px rgba(0,0,0,.2),0 12px 28px -10px rgba(0,0,0,.55);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
-  .snd:hover{background:var(--rust)} .snd:active{transform:scale(.96)}
+  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:12px;height:56px;padding-inline:var(--s-4);border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:16px;font-weight:700;white-space:nowrap;
+    border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.2),0 16px 34px -10px rgba(138,50,19,.75);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .snd::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--rust);opacity:0;pointer-events:none}
+  .snd[aria-pressed="false"]::before{animation:snd-ring 2.2s ease-out infinite}
+  @keyframes snd-ring{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.25,1.6)}}
+  .snd[aria-pressed="true"]{background:var(--ink)}
+  .snd-ico{flex:none;width:22px;height:22px}
+  @media (prefers-reduced-motion:reduce){.snd[aria-pressed="false"]::before{animation:none}}
+  .snd:hover{background:var(--rust-deep)} .snd:active{transform:scale(.96)}
   .snd:focus-visible{outline:3px solid rgba(165,62,26,.6);outline-offset:3px}
   .snd-bars{display:inline-flex;align-items:flex-end;gap:3px;height:16px}
   .snd-bars i{width:3px;height:4px;border-radius:2px;background:currentColor;transform-origin:bottom}
   .snd[aria-pressed="true"] .snd-bars i{height:16px;animation:snd 1.1s ease-in-out infinite}
   .snd[aria-pressed="true"] .snd-bars i:nth-child(2){animation-delay:-.35s}.snd[aria-pressed="true"] .snd-bars i:nth-child(3){animation-delay:-.7s}.snd[aria-pressed="true"] .snd-bars i:nth-child(4){animation-delay:-.2s}
   @keyframes snd{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
-  @media (max-width:639px){.snd-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.snd{width:var(--btn-h);padding:0;justify-content:center}}
+  @media (max-width:639px){.snd-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.snd{width:56px;padding:0;justify-content:center;bottom:var(--s-3);inset-inline-start:var(--s-3)}.snd-bars{display:none}}
   @media (prefers-reduced-motion:reduce){.snd[aria-pressed="true"] .snd-bars i{animation:none;transform:scaleY(.7)}}
   /* ===== RADIUS SYSTEM (single scale, applied last) =====
      xs 6 focus rings and text links · sm 8 buttons, inputs, small controls · md 12 menus, panels, thumbnails
@@ -828,6 +834,7 @@
 </header>
 
 <button class="snd" id="lxSound" type="button" aria-pressed="false" aria-label="تشغيل الموسيقى">
+  <svg class="snd-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg>
   <span class="snd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
   <span class="snd-t" id="lxSoundT">تشغيل الموسيقى</span>
 </button>
