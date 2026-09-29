@@ -345,6 +345,9 @@ window.I18N = (() => {
     /* ---- stories: رواد يصنعون الأثر ---- */
     'قصص ملهمة من الصعيد': { en: 'Featured entrepreneurs', es: 'Emprendedores destacados' },
     'رواد يصنعون الأثر': { en: 'Stories Made in Upper Egypt', es: 'Historias hechas en el Alto Egipto' },
+    'تعرّف على سيدات وشباب من الأقصر حوّلوا الحرف والتراث المحلي إلى مشاريع تنبض بالإبداع وتخلق فرصًا جديدة لمجتمعاتهم.':
+      { en: 'Meet the local entrepreneurs, women and youth who are turning heritage, creativity and community into thriving businesses in Luxor.',
+        es: 'Conoce a los emprendedores locales, mujeres y jóvenes que convierten el patrimonio, la creatividad y la comunidad en negocios prósperos en Luxor.' },
     'تعرّف على سيدات وشباب من الأقصر وأسوان حوّلوا الحرف والتراث المحلي إلى مشاريع تنبض بالإبداع وتخلق فرصًا جديدة لمجتمعاتهم.':
       { en: 'Meet the local entrepreneurs, women and youth who are turning heritage, creativity and community into thriving businesses across Luxor and Aswan.',
         es: 'Conoce a los emprendedores locales, mujeres y jóvenes que convierten el patrimonio, la creatividad y la comunidad en negocios prósperos en Luxor y Asuán.' },

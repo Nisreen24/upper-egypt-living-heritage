@@ -1075,8 +1075,18 @@
   .lx-credits summary{display:inline-flex;align-items:center;min-height:var(--tap);cursor:pointer;font-weight:600;border-radius:var(--radius-xs)}
   .lx-credits summary:hover{color:var(--rust)} .lx-credits summary:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:2px}
   .lx-credits p{margin:0 0 var(--s-2);line-height:1.7!important;text-align:left}
+  .lx-stories{padding-block:var(--s-7) var(--s-6)}
+  @media (min-width:1024px){
+    .lx-stories .st-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+    .lx-stories .st-side{display:block;grid-column:auto}
+    .lx-stories .st-feature{grid-column:auto}
+    .lx-stories .st-card{height:100%;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;border-radius:var(--radius-card-lg);padding:var(--s-3)}
+    .lx-stories .st-card figure{min-height:300px;border-radius:var(--radius-card)}
+    .lx-stories .st-card .st-body{padding:var(--s-3) var(--s-2) var(--s-2)}
+    .lx-stories .st-body .st-name{font-size:var(--fs-h3-lg)}
+  }
   /* ===== places: full-bleed showcase ===== */
-  .pv{position:relative;isolation:isolate;overflow:hidden;background:#1a130c;color:#fff;margin-block:var(--s-5);min-height:min(100vh,760px);display:flex;--cw:150px;--ch:210px;--gap:12px}
+  .pv{position:relative;isolation:isolate;overflow:hidden;background:#1a130c;color:#fff;margin-block:var(--s-5) 0;min-height:min(100vh,760px);display:flex;--cw:150px;--ch:210px;--gap:12px}
   @media (min-width:768px){.pv{--cw:180px;--ch:250px;--gap:16px;min-height:680px}}
   @media (min-width:1200px){.pv{--cw:210px;--ch:300px;--gap:20px;min-height:min(100vh,780px)}}
   .pv-bgs,.pv-bg,.pv-shade{position:absolute;inset:0}
@@ -1381,9 +1391,9 @@
           <li><a class="tb-link" href="#lx-act">أهم الأنشطة</a></li>
           <li><a class="tb-link" href="#lx-trips">أفكار للرحلات</a></li>
           <li><a class="tb-link" href="#lx-places">أماكن تستحق الزيارة</a></li>
+          <li><a class="tb-link" href="#lx-people">رواد الأعمال المحليين</a></li>
           <li><a class="tb-link" href="#lx-food">أماكن تناول الطعام</a></li>
           <li><a class="tb-link" href="#lx-stay">أماكن الإقامة</a></li>
-          <li><a class="tb-link" href="#lx-people">رواد الأعمال المحليين</a></li>
           <li><a class="tb-link" href="#lx-info">معلومات عملية</a></li>
           <li><a class="tb-link" href="#lx-map-h">خريطة الأقصر</a></li>
         </ul>
@@ -1557,6 +1567,47 @@
       </div>
     </section>
 
+    <section id="business" class="stories lx-stories" aria-labelledby="lx-people">
+  <img class="st-scene" src="ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-2172.webp" alt="" aria-hidden="true" width="2172" height="724" loading="lazy">
+  <div class="wrap">
+    <header class="st-head">
+      <div>
+        <span class="st-eyebrow">قصص ملهمة من الصعيد</span>
+        <h2 id="lx-people" class="display st-title">تعرف على رواد الأعمال المحلــــيين</h2>
+        <p class="st-sub">تعرّف على سيدات وشباب من الأقصر حوّلوا الحرف والتراث المحلي إلى مشاريع تنبض بالإبداع وتخلق فرصًا جديدة لمجتمعاتهم.</p>
+      </div>
+      <a class="st-cta" href="index.html#all-entrepreneurs"><span>استكشف جميع الرواد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+    </header>
+
+    <div class="st-grid">
+      <article class="st-feature" data-slot="0">
+        <img class="st-feature-img" src="ASSETS/Fatma Boghdady-1448.webp" srcset="ASSETS/Fatma Boghdady-480.webp 480w, ASSETS/Fatma Boghdady-960.webp 960w, ASSETS/Fatma Boghdady-1440.webp 1440w, ASSETS/Fatma Boghdady-1448.webp 1448w" sizes="(max-width:1023px) 100vw, 58vw" alt="فاطمة البغدادي في ورشتها بالأقصر وأمامها حقائب جلدية وإكسسوارات من صنعها" loading="lazy" decoding="async" style="object-position:62% 35%">
+        <span class="st-tint" aria-hidden="true"></span>
+        <span class="st-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11M10 10V4.5a1.5 1.5 0 0 1 3 0V11M13 10.5V6a1.5 1.5 0 0 1 3 0v6.5M16 12v-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.8-2.4L4 15.5a1.4 1.4 0 0 1 2.2-1.7L7 15"/></svg><span>حرف يدوية</span></span>
+        <div class="st-panel">
+          <h3 class="st-name">فاطمة البغدادي</h3>
+          <p class="st-biz">الحرفجية</p>
+          <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
+          <p class="st-desc">تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم، حيث تمزج بين الحرف التقليدية والتصميم العصري لتقدم قطعاً تحكي قصة الأقصر بروح جديدة.</p>
+          <a class="st-link" href="index.html#story-fatma"><span>عرض القصة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+        </div>
+      </article>
+      <div class="st-side">
+        <article class="st-card" data-slot="1">
+          <figure><img class="" src="ASSETS/Zainab Gamal-1461.webp" srcset="ASSETS/Zainab Gamal-480.webp 480w, ASSETS/Zainab Gamal-960.webp 960w, ASSETS/Zainab Gamal-1440.webp 1440w, ASSETS/Zainab Gamal-1461.webp 1461w" sizes="(max-width:1023px) 50vw, 20vw" alt="زينب جمال تعرض مجموعة من العقود والإكسسوارات اليدوية من صنعها" loading="lazy" decoding="async" style="object-position:18% 45%"><span class="st-tag st-tag--olive"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="M9.5 8.5L12 4l2.5 4.5"/></svg><span>إكسسوارات</span></span></figure>
+          <div class="st-body">
+            <h3 class="st-name">زينب جمال</h3>
+            <p class="st-biz">زينب للإكسسوارات</p>
+            <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
+            <p class="st-desc">تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي، لتقدم منتجات فريدة تعكس هوية الصعيد وتدعم الحرف المنزلية.</p>
+            <a class="st-link" href="index.html#story-zainab"><span>عرض القصة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
     <section class="lx-sec" aria-labelledby="lx-food">
       <div class="wrap">
         <header class="lx-head">
@@ -1664,36 +1715,7 @@
       </div>
     </section>
 
-    <section class="lx-sec" aria-labelledby="lx-people">
-      <div class="wrap">
-        <header class="lx-head">
-          <h2 class="display lx-h" id="lx-people">تعرف على رواد الأعمال المحلــــيين</h2>
-          <a class="lx-all" href="#" data-soon><span>عرض الكل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
-        </header>
-        <ul class="lx-row " style="--n:4" role="list">
-        <li><a class="lx-card" href="#" data-soon>
-          <img src="ASSETS/Fatma%20Boghdady-960.webp" srcset="ASSETS/Fatma%20Boghdady-480.webp 480w, ASSETS/Fatma%20Boghdady-960.webp 960w" sizes="(min-width:1024px) 290px, 70vw" alt="فاطمة البغدادي في ورشتها بالأقصر وأمامها حقائب جلدية وإكسسوارات من صنعها" loading="lazy" decoding="async">
-          <span class="lx-card-txt"><span class="lx-card-t">حرف يدوية تقليدية</span></span>
-          <span class="lx-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></span>
-        </a></li>
-        <li><a class="lx-card" href="#" data-soon>
-          <img src="ASSETS/Zainab%20Gamal-960.webp" srcset="ASSETS/Zainab%20Gamal-480.webp 480w, ASSETS/Zainab%20Gamal-960.webp 960w" sizes="(min-width:1024px) 290px, 70vw" alt="زينب جمال تعرض مجموعة من العقود والإكسسوارات اليدوية من صنعها" loading="lazy" decoding="async">
-          <span class="lx-card-txt"><span class="lx-card-t">منتجات محلية</span></span>
-          <span class="lx-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></span>
-        </a></li>
-        <li><a class="lx-card" href="#" data-soon>
-          <img src="ASSETS/f92cf7b7-62c4-495c-9d9a-4286c9b2035d-960.webp" srcset="ASSETS/f92cf7b7-62c4-495c-9d9a-4286c9b2035d-480.webp 480w, ASSETS/f92cf7b7-62c4-495c-9d9a-4286c9b2035d-960.webp 960w" sizes="(min-width:1024px) 290px, 70vw" alt="مرشد محلي يشرح للزوار مسار الجولة أمام المعبد" loading="lazy" decoding="async">
-          <span class="lx-card-txt"><span class="lx-card-t">تجارب ثقافية</span></span>
-          <span class="lx-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></span>
-        </a></li>
-        <li><a class="lx-card" href="#" data-soon>
-          <img src="ASSETS/image%2066-960.webp" srcset="ASSETS/image%2066-480.webp 480w, ASSETS/image%2066-960.webp 960w" sizes="(min-width:1024px) 290px, 70vw" alt="سيدة مبتسمة تحمل منسوجات يدوية ملوّنة" loading="lazy" decoding="async">
-          <span class="lx-card-txt"><span class="lx-card-t">مبادرات مجتمعية</span></span>
-          <span class="lx-go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></span>
-        </a></li>
-        </ul>
-      </div>
-    </section>
+    
 
     <section class="lx-sec" aria-labelledby="lx-info">
       <div class="wrap">
@@ -2444,6 +2466,80 @@
 </script>
 <script>
 document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); });
+</script>
+<script>
+(() => {
+  if (!window.gsap) return;
+  const $ = (s) => document.querySelector(s);
+  /* ---------- Stories rotation: the featured entrepreneur rotates every few seconds ---------- */
+  (() => {
+    const section = $('#business'); if (!section) return;
+    const feature = section.querySelector('.st-feature'), cards = [...section.querySelectorAll('.st-card')];
+    const t = (k) => (window.I18N ? I18N.t(k) : k);
+    const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ICO = {
+      hand: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11M10 10V4.5a1.5 1.5 0 0 1 3 0V11M13 10.5V6a1.5 1.5 0 0 1 3 0v6.5M16 12v-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.8-2.4L4 15.5a1.4 1.4 0 0 1 2.2-1.7L7 15"/></svg>',
+      ring: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="M9.5 8.5L12 4l2.5 4.5"/></svg>',
+      train: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 12l3-3 3 3 4-4"/></svg>'
+    };
+    const srcset = (b, max) => `ASSETS/${b}-480.webp 480w, ASSETS/${b}-960.webp 960w, ASSETS/${b}-1440.webp 1440w, ASSETS/${b}-${max}.webp ${max}w`;
+    const DATA = [
+      { b: 'Fatma Boghdady', max: 1448, posBig: '62% 35%', posSmall: '58% 40%', tag: 'حرف يدوية', tagCls: 'st-tag--clay', ico: 'hand', alt: 'فاطمة البغدادي في ورشتها بالأقصر وأمامها حقائب جلدية وإكسسوارات من صنعها', name: 'فاطمة البغدادي', biz: 'الحرفجية', loc: 'الأقصر', href: '#story-fatma',
+        desc: 'تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم، حيث تمزج بين الحرف التقليدية والتصميم العصري لتقدم قطعاً تحكي قصة الأقصر بروح جديدة.' },
+      { b: 'Zainab Gamal', max: 1461, posBig: '25% 40%', posSmall: '18% 45%', tag: 'إكسسوارات', tagCls: 'st-tag--olive', ico: 'ring', alt: 'زينب جمال تعرض مجموعة من العقود والإكسسوارات اليدوية من صنعها', name: 'زينب جمال', biz: 'زينب للإكسسوارات', loc: 'الأقصر', href: '#story-zainab',
+        desc: 'تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي، لتقدم منتجات فريدة تعكس هوية الصعيد وتدعم الحرف المنزلية.' },
+    ];
+    let order = DATA.map((_, i) => i), busy = false, visible = false, hold = false;
+    function fillTag(el, d) { el.className = 'st-tag ' + d.tagCls; el.innerHTML = ICO[d.ico] + '<span>' + t(d.tag) + '</span>'; }
+    function fillCopy(root, d, link) {
+      root.querySelector('.st-name').textContent = t(d.name); root.querySelector('.st-biz').textContent = t(d.biz);
+      root.querySelector('.st-loc span').textContent = t(d.loc); root.querySelector('.st-desc').textContent = t(d.desc);
+      const a = root.querySelector(link); a.href = d.href; a.querySelector('span').textContent = t('عرض القصة');
+    }
+    function paint() {
+      const f = DATA[order[0]], img = feature.querySelector('.st-feature-img');
+      img.src = `ASSETS/${f.b}-${f.max}.webp`; img.srcset = srcset(f.b, f.max); img.style.objectPosition = f.posBig; img.alt = t(f.alt);
+      fillTag(feature.querySelector('.st-tag'), f); fillCopy(feature.querySelector('.st-panel'), f, '.st-link');
+      cards.forEach((c, k) => { const d = DATA[order[k + 1]], im = c.querySelector('figure img');
+        im.src = `ASSETS/${d.b}-${d.max}.webp`; im.srcset = srcset(d.b, d.max); im.style.objectPosition = d.posSmall; im.alt = t(d.alt);
+        fillTag(c.querySelector('.st-tag'), d); fillCopy(c.querySelector('.st-body'), d, '.st-link'); });
+    }
+    function rotate() {
+      if (busy) return; busy = true;
+      order = [...order.slice(1), order[0]];
+      if (rm) { paint(); busy = false; return; }
+      // Switcher: each card glides to the slot it is moving into (feature -> card 2, card 1 -> feature, card 2 -> card 1),
+      // then the DOM is repainted underneath and the transforms are cleared. Cards never disappear.
+      // Layout morph: a clone of each card travels to the slot it is moving into (feature -> card 2,
+      // card 1 -> feature, card 2 -> card 1) by animating its real box, so the content reflows instead
+      // of stretching. Underneath, the grid is repainted, then the clones are removed.
+      const grid = section.querySelector('.st-grid'), g = grid.getBoundingClientRect();
+      const els = [feature, ...cards];
+      const from = els.map(e => e.getBoundingClientRect());
+      const dest = [cards[cards.length - 1], feature, ...cards.slice(0, -1)].map(e => e.getBoundingClientRect());
+      const clones = els.map((el, k) => {
+        const c = el.cloneNode(true); c.removeAttribute('data-slot');
+        Object.assign(c.style, { position: 'absolute', margin: 0, minHeight: 0, pointerEvents: 'none', zIndex: k === 1 ? 6 : 5,
+          left: (from[k].left - g.left) + 'px', top: (from[k].top - g.top) + 'px', width: from[k].width + 'px', height: from[k].height + 'px' });
+        grid.appendChild(c); return c;
+      });
+      els.forEach(e => { e.style.visibility = 'hidden'; });
+      const D = 1.15;
+      const tl = gsap.timeline({ onComplete: () => { clones.forEach(c => c.remove()); els.forEach(e => { e.style.visibility = ''; }); busy = false; } });
+      clones.forEach((c, k) => {
+        const d = dest[k];
+        tl.to(c, { left: d.left - g.left, top: d.top - g.top, width: d.width, height: d.height, duration: D, ease: 'power2.inOut' }, 0);
+      });
+      tl.add(paint, D * 0.9);
+    }
+    new IntersectionObserver((en) => { visible = en[0].isIntersecting; }, { threshold: 0.35 }).observe(section);
+    section.addEventListener('pointerenter', () => { hold = true; }); section.addEventListener('pointerleave', () => { hold = false; });
+    section.addEventListener('focusin', () => { hold = true; }); section.addEventListener('focusout', () => { hold = section.contains(document.activeElement); });
+    if (!rm) setInterval(() => { if (visible && !hold && !document.hidden) rotate(); }, 8000);
+    document.addEventListener('i18n:change', paint);
+    window.__stRotate = rotate;
+  })();
+})();
 </script>
 </body>
 </html>
