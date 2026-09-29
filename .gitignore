@@ -4,3 +4,5 @@ server.log
 temporary screenshots/
 .cache/
 .puppeteerrc.cjs
+# local-only trial audio (not licensed for publishing)
+ASSETS/audio/home-theme.*
