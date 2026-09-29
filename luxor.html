@@ -2493,7 +2493,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const muted = () => { try { return localStorage.getItem(KEY) === 'off'; } catch { return false; } };
   const save = v => { try { localStorage.setItem(KEY, v); } catch {} };
   function ui() { b.setAttribute('aria-pressed', String(on)); const l = I18N.t(on ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى'); b.setAttribute('aria-label', l); tx.textContent = l; }
-  function ramp(to, done) { cancelAnimationFrame(fade); const from = a.volume, t0 = performance.now(); const step = t => { const k = Math.min(1, (t - t0) / 1400); a.volume = from + (to - from) * k; if (k < 1) fade = requestAnimationFrame(step); else if (done) done(); }; fade = requestAnimationFrame(step); }
+  function ramp(to, done) { cancelAnimationFrame(fade); const from = a.volume, t0 = performance.now(); const step = t => { const k = Math.max(0, Math.min(1, (t - t0) / 1400)); a.volume = Math.max(0, Math.min(1, from + (to - from) * k)); if (k < 1) fade = requestAnimationFrame(step); else if (done) done(); }; fade = requestAnimationFrame(step); }
   function play() { a.volume = 0; return a.play().then(() => { on = true; ui(); ramp(MAX); }).catch(() => { on = false; ui(); }); }
   function stop() { on = false; ui(); ramp(0, () => a.pause()); }
   b.addEventListener('click', e => { e.stopPropagation(); if (on) { save('off'); stop(); } else { save('on'); play(); } });
@@ -2501,6 +2501,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const evs = ['pointerdown', 'keydown', 'wheel', 'touchstart'], off = () => evs.forEach(n => removeEventListener(n, first, true));
   evs.forEach(n => addEventListener(n, first, { capture: true, passive: true }));
   document.addEventListener('i18n:change', ui); ui();
+  /* try to start right away; if the browser refuses sound before a gesture, the first interaction starts it */
+  if (!muted()) play().then(() => { if (on) off(); });
   window.__snd = { get on() { return on; }, get vol() { return a.volume; }, get paused() { return a.paused; } };
 })();
 </script>
