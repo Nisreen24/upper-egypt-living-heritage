@@ -728,6 +728,16 @@
   html[lang="ar"] p,html[lang="ar"] li{line-height:max(1.7em,var(--lh-body))}
   /* reduced motion: stop transforms on hover too */
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.card:hover,.gem:hover,.ss-card:hover,.xa-card:hover{transform:none}}
+/* ===== RADIUS SYSTEM (single scale, applied last) =====
+     xs 6 focus rings and text links · sm 8 buttons, inputs, small controls · md 12 menus, panels, thumbnails
+     card 18 cards and media · card-lg 22 featured surfaces · full pills and circles */
+  :root{--radius-xs:6px;--radius-sm:8px;--radius-btn:8px;--radius-md:12px;--radius-card:18px;--radius-card-lg:22px;--radius-full:999px}
+  .menu button,.lx-mapctl button{border-radius:var(--radius-sm)}
+  .menu,.tile,.lx-filter,.mobile-menu a,.ev-thumb,.reset{border-radius:var(--radius-md)}
+  .xh-media,.lx-art,.lx-card,.lx-faq,.lx-map{border-radius:var(--radius-card)}
+  .xa-card,.xl-card,.cf-card,.sy-img,.mobile-menu{border-radius:var(--radius-card-lg)}
+  .xa-hit:focus-visible,.xl-hit:focus-visible{border-radius:var(--radius-card-lg)}
+  @media (min-width:1024px){.lx-art:not(.lx-art--wide){border-radius:0}}
 </style>
 </head>
 <body class="min-h-screen">
