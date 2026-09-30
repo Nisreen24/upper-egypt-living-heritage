@@ -838,6 +838,7 @@
   <span class="snd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
   <span class="snd-t" id="lxSoundT">تشغيل الموسيقى</span>
 </button>
+<!-- Music: "Ibn Al-Noor" by Kevin MacLeod (incompetech.com), CC BY 4.0 -->
 <audio id="lxAudio" loop preload="none" data-try="ASSETS/audio/home-theme.mp3" data-fallback="ASSETS/audio/home-ambient.mp3"></audio>
 <script>(() => { const a = document.getElementById('lxAudio'); a.src = a.dataset.fallback; fetch(a.dataset.try, { method: 'HEAD' }).then(r => { if (r.ok) a.src = a.dataset.try; }).catch(() => {}); })();</script>
 
@@ -1267,7 +1268,6 @@
     </div>
   </div>
   </div><!-- /footer-main -->
-  <p class="footer-credit" dir="ltr" lang="en">Music: “Ibn Al-Noor” by Kevin MacLeod, incompetech.com (CC BY 4.0)</p>
   <img class="footer-strip" src="ASSETS/Group 23.webp" alt="" aria-hidden="true" width="1440" height="79" loading="lazy">
 </footer>
 
